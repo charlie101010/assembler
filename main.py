@@ -12,7 +12,7 @@ p = parser.Parser()
 trimmed_instructions = p.read_in(contents)
 c  = code.Code();
 output = c.convert_to_binary(trimmed_instructions)
-with open(name, 'a') as the_file:
+with open(name, 'w') as the_file:
     the_file.write(str(output))
-print output
+
 

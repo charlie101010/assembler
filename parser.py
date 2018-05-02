@@ -2,7 +2,7 @@
 
 class Parser(object):
 
-	def _init_(self):
+	def __init__(self):
 		self.name = "parser"
 
 	def read_in(self, code):
