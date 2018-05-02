@@ -38,35 +38,37 @@ class Symbol(object):
 
 
 
-	def populate_table(self, instructions):
+	def populate_labels(self, instructions):
 		line_count = 0
-		next_available = 16
 		for line in instructions:
 			if line[0]=='(':
 				line=line[1:-1]
 				self.symbol_table[line] = line_count
-			elif line[0]=='@':
-				line = line[1:]
-				isDigit = line[0].isdigit()
-				line_count+=1
-				if isDigit == False:
-					isDigit = line[0].isupper()
-					print line
-					print isDigit
-					if isDigit == False:
-						if not self.check_table(line):
-							print line
-							self.symbol_table[line] = next_available
-							print "this is " + str(self.symbol_table[line])
-							next_available+=1
 			else:
 				line_count+=1
-		print self.symbol_table
+		
+
+
+	def populate_variables(self, instructions):
+		self.populate_labels(instructions)
+		next_available = 16
+		for line in instructions:
+			if line[0]=='@':
+				line = line[1:]
+				isDigit = line[0].isdigit()
+				if isDigit == False:
+					isDigit = line[0].isupper()
+					if isDigit == False:
+						if not self.check_table(line):
+							self.symbol_table[line] = next_available
+							print line + str(next_available)
+							next_available+=1
+		print(list(self.symbol_table.keys())[list(self.symbol_table.values()).index(16)])
 
 
 	def replace_symbols(self, instructions):
 		no_symbols = []
-		self.populate_table(instructions)
+		self.populate_variables(instructions)
 		for line in instructions:
 			if line[0]=='@':
 				isDigit = line[1].isdigit()

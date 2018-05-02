@@ -5,7 +5,6 @@ import symbol
 
 name = sys.argv[1][:-4]
 name = name + ".hack"
-print name
 f = open(sys.argv[1],"r")
 contents = f.readlines()
 f.closed
