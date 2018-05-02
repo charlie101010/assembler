@@ -114,11 +114,8 @@ class Code(object):
 			elif kind == 'C':
 				dest, comp, jump = self.c_instruction_parse(line)
 				dest = self.dest_value(dest)
-				print dest
 				comp = self.control_bits(comp)
-				print comp
 				jump = self.jumptable(jump)
-				print jump
 				binary_cvalues = '111' + comp + dest + jump
 				binary_values.append(binary_cvalues)
 			else:
