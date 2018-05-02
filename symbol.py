@@ -3,7 +3,7 @@ class Symbol(object):
 	def __init__(self):
 
 		self.symbol_table = {
-		'RO':0,
+		'R0':0,
 		'R1':1,
 		'R2':2,
 		'R3':3,
@@ -44,13 +44,21 @@ class Symbol(object):
 		for line in instructions:
 			if line[0]=='(':
 				line=line[1:-1]
-				self.symbol_table[line] = line_count+1
+				self.symbol_table[line] = line_count
 			elif line[0]=='@':
 				line = line[1:]
+				isDigit = line[0].isdigit()
 				line_count+=1
-				if not self.check_table(line):
-					self.symbol_table[line] = next_available
-					next_available+=1
+				if isDigit == False:
+					isDigit = line[0].isupper()
+					print line
+					print isDigit
+					if isDigit == False:
+						if not self.check_table(line):
+							print line
+							self.symbol_table[line] = next_available
+							print "this is " + str(self.symbol_table[line])
+							next_available+=1
 			else:
 				line_count+=1
 		print self.symbol_table
@@ -71,7 +79,6 @@ class Symbol(object):
 					no_symbols.append(line)
 			else:
 				no_symbols.append(line)
-		print no_symbols
 		return no_symbols
 
 

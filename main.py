@@ -16,6 +16,7 @@ symbols_replaced = s.replace_symbols(trimmed_instructions)
 c  = code.Code();
 output = c.convert_to_binary(symbols_replaced)
 with open(name, 'w') as the_file:
-    the_file.write(str(output))
+	for item in output:
+		the_file.write("%s\n" % item)
 
 
