@@ -67,6 +67,8 @@ class Symbol(object):
 					output = self.symbol_table[line]
 					addvalue = '@' + str(output)
 					no_symbols.append(addvalue)
+				else:
+					no_symbols.append(line)
 			else:
 				no_symbols.append(line)
 		print no_symbols
