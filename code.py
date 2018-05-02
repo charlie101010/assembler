@@ -1,4 +1,3 @@
-
 class Code(object):
 
 	def __init__(self):
@@ -119,7 +118,7 @@ class Code(object):
 				binary_cvalues = '111' + comp + dest + jump
 				binary_values.append(binary_cvalues)
 			else:
-				binary_values.append("Symbol")
+				continue
 		return binary_values
 
 
